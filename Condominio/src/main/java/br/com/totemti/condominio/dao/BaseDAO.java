@@ -1,7 +1,9 @@
 package br.com.totemti.condominio.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -39,6 +41,27 @@ public class BaseDAO<Entidade> {
 			session.close();
 		}
 
+	}
+	
+	public List<Entidade> listar() {
+		Session session =  HibernateUtil.getSessionFactory().openSession();
+		
+		try {
+			
+			Criteria consulta = session.createCriteria(classe);
+			
+			List<Entidade> resultado = consulta.list();
+			
+			return resultado;
+			
+		} catch (RuntimeException error) {
+			
+			throw error;
+			
+		}finally {
+			
+			session.close();
+		}
 	}
 
 }
