@@ -31,6 +31,13 @@
 		<!-- Cria as tabelas do banco de dados(alterar para update) -->
 		<property name="hbm2ddl.auto">create</property>
 		
+		<!-- Mapeamento das entidades -->
+		
+		<mapping class="br.com.totemti.condominio.modelo.Endereco" />
+		<mapping class="br.com.totemti.condominio.modelo.Proprietario" />
+		<mapping class="br.com.totemti.condominio.modelo.Morador"/>
+		<mapping class="br.com.totemti.condominio.modelo.Condominio" />
+		
 	</session-factory>
 
 </hibernate-configuration>
