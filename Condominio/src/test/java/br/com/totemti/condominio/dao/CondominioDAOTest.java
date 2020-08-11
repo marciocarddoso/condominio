@@ -26,5 +26,43 @@ public class CondominioDAOTest {
 		CondominioDAO condominioDAO = new CondominioDAO();
 		List<Condominio> resultado = condominioDAO.listar();
 	}
+	
+	@Test
+	@Ignore
+	public void buscar() {
+		Long codigo = 6L;
+		CondominioDAO condominioDAO = new CondominioDAO();
+		Condominio condominio = condominioDAO.buscar(codigo);
+
+		if (condominio == null) {
+			System.out.println("Nenhum registro encontrado!");
+		}
+		
+		if (condominio != null) {
+			System.out.println("Codigo " + condominio.getId() + " - Condominio " + condominio.getNome());
+		}
+
+	}
+	
+	@Test
+	@Ignore
+	public void excluir() {
+		
+		Long codigo = 6L;
+		CondominioDAO condominioDAO = new CondominioDAO();
+		Condominio condominio = condominioDAO.buscar(codigo);
+		
+		if (condominio == null) {
+			System.out.println("Nenhum registro encontrado!");
+		}
+		
+		if (condominio != null) {
+			
+			System.out.println("Condominio encontrado: " + condominio.getNome());
+			condominioDAO.excluir(condominio);
+			System.out.println("Registro excluído com sucesso");
+		}
+		
+	}
 
 }
